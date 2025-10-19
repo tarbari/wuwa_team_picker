@@ -1,1 +1,134 @@
+# General
 .aider*
+.DS_Store
+Thumbs.db
+*.log
+logs/
+*.swp
+*.swo
+*~
+.tmp/
+tmp/
+temp/
+.cache/
+.history/
+
+# Editor/IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Environment and secrets
+.env
+.env.*
+.envrc
+.secrets/
+*.pem
+*.key
+*.p12
+*.crt
+id_rsa
+id_ecdsa
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.hypothesis/
+.ipynb_checkpoints/
+.jupyter/lab/workspaces/
+*.egg-info/
+.eggs/
+dist/
+build/
+wheels/
+
+# Node/JavaScript
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+.npm/
+.yarn/
+.parcel-cache/
+.next/
+.nuxt/
+.vercel/
+.docusaurus/
+out/
+coverage/
+.nyc_output/
+
+# Java/Kotlin
+target/
+build/
+.gradle/
+.project
+.classpath
+.settings/
+*.class
+*.war
+*.ear
+*.jar
+
+# Go
+bin/
+.gopath/
+cover.out
+
+# Rust
+target/
+
+# PHP/Composer
+vendor/
+
+# Ruby
+.bundle/
+vendor/bundle/
+.yardoc/
+doc/
+pkg/
+coverage/
+
+# C/C++ and build systems
+*.o
+*.obj
+*.so
+*.dylib
+*.a
+*.lib
+*.dll
+*.exe
+*.out
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+build-*/
+
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.*
+
+# OS junk
+.Spotlight-V100
+.Trashes
+.TemporaryItems
+.Trash-*
