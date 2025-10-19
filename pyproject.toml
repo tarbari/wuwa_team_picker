@@ -18,3 +18,6 @@ dev = [
 gui = [
     "pyside6>=6.10.0",
 ]
+
+[tool.uv]
+package = true
