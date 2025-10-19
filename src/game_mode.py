@@ -6,7 +6,7 @@ from character import Character
 from constants import GAME_MODES
 
 if TYPE_CHECKING:
-    from wuwa_char_random import ScreenPrinter
+    from screen_printer import ScreenPrinter
 else:
     ScreenPrinter = Any
 
