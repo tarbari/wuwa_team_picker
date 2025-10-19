@@ -38,10 +38,19 @@ Using pip:
 
 A build script is provided using PyInstaller.
 
+TUI (default):
 - Build:
   - `./scripts/build.sh`
 - Run the packaged executable (after build):
   - `./dist/wuwa-team-picker`
+
+GUI (PySide6):
+- Make sure GUI dependencies are installed (first time only):
+  - `uv sync --group gui`
+- Build:
+  - `UI_FLAVOR=gui ./scripts/build.sh`
+- Run the packaged executable (after build):
+  - `./dist/wuwa-team-picker-gui`
 
 You can set APP_NAME to change the output binary name, or pass a different entry script:
 - `APP_NAME=my-picker ./scripts/build.sh`
