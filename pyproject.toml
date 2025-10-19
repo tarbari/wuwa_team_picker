@@ -9,7 +9,7 @@ dependencies = [
 ]
 
 [project.scripts]
-build = "wuwa_build:main"
+build = "scripts.wuwa_build:main"
 
 [dependency-groups]
 dev = [
