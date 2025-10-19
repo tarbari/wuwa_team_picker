@@ -15,6 +15,3 @@ dev = [
 gui = [
     "pyside6>=6.10.0",
 ]
-
-[tool.uv.scripts]
-build = "bash scripts/build.sh"
