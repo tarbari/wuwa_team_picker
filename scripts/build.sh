@@ -30,18 +30,27 @@ cd "${PROJECT_ROOT}"
 # Clean previous builds
 rm -rf build dist "${APP_NAME}.spec"
 
-# Choose PyInstaller launcher
-if command -v pyinstaller >/dev/null 2>&1; then
-  PI_CMD=(pyinstaller)
-elif command -v uv >/dev/null 2>&1; then
-  PI_CMD=(uvx pyinstaller)
+# Choose Python from the project venv if present; fall back to system python
+if [[ -x ".venv/bin/python" ]]; then
+  PYTHON=".venv/bin/python"
 else
-  echo "PyInstaller not found. Install it with one of:"
-  echo "  uv tool install pyinstaller"
-  echo "  pipx install pyinstaller"
-  echo "  python -m pip install pyinstaller"
-  exit 1
+  PYTHON="$(command -v python3 || command -v python)"
 fi
+
+# Ensure GUI deps are available when building GUI
+if [[ "${UI_FLAVOR}" == "gui" ]]; then
+  if ! "${PYTHON}" -c "import PySide6" >/dev/null 2>&1; then
+    echo "ERROR: PySide6 not found in ${PYTHON}."
+    echo "Install GUI deps first:"
+    echo "  uv sync --group gui"
+    echo "or:"
+    echo "  ${PYTHON} -m pip install PySide6"
+    exit 1
+  fi
+fi
+
+# Run PyInstaller via the selected Python to use the correct environment
+PI_CMD=("${PYTHON}" -m PyInstaller)
 
 # Configure extra args based on UI flavor
 EXTRA_ARGS=()
