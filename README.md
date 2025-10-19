@@ -36,11 +36,11 @@ Using pip:
 
 ## Building a single executable
 
-A build script is provided using PyInstaller.
+You can build using uv, which installs and runs the project's build entry point.
 
 TUI (default):
 - Build:
-  - `./scripts/build.sh`
+  - `uv run build`
 - Run the packaged executable (after build):
   - `./dist/wuwa-team-picker`
 
@@ -48,13 +48,17 @@ GUI (PySide6):
 - Make sure GUI dependencies are installed (first time only):
   - `uv sync --group gui`
 - Build:
-  - `UI_FLAVOR=gui ./scripts/build.sh`
+  - `uv run build -- --gui`
 - Run the packaged executable (after build):
   - `./dist/wuwa-team-picker-gui`
 
-You can set APP_NAME to change the output binary name, or pass a different entry script:
-- `APP_NAME=my-picker ./scripts/build.sh`
-- `./scripts/build.sh src/wuwa_char_random.py`
+Advanced:
+- Change output binary name:
+  - `APP_NAME=my-picker uv run build`
+- Build a different entry script:
+  - `uv run build -- src/wuwa_char_random.py`
+- You can still call the underlying script directly:
+  - `./scripts/build.sh` or `UI_FLAVOR=gui ./scripts/build.sh`
 
 ## Notes
 
