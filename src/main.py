@@ -4,17 +4,8 @@ import argparse
 import curses
 
 from data_loader import DataLoader
-from screen_printer import ScreenPrinter
 from application import Application
-
-# Constants imported from constants.py
-
-
-
-
-# ScreenPrinter moved to screen_printer package
-
-# GameMode moved to game_mode.py
+from screen_printer import ScreenPrinter
 
 
 def parse_args():
