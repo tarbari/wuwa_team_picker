@@ -6,12 +6,12 @@ from character import Character
 from constants import GAME_MODES
 
 if TYPE_CHECKING:
-    from screen_printer import ScreenPrinter
+    from ui.types import UI
 else:
-    ScreenPrinter = Any
+    UI = Any
 
 class GameMode:
-    def __init__(self, scr: ScreenPrinter, characters: List[Character]):
+    def __init__(self, scr: UI, characters: List[Character]):
         self.scr = scr
         self.characters = characters
 
