@@ -2,13 +2,10 @@
 
 import argparse
 import curses
-from typing import List
 
-from character import Character
 from data_loader import DataLoader
-from game_mode import GameMode
-from constants import GAME_MODES
 from screen_printer import ScreenPrinter
+from application import Application
 
 # Constants imported from constants.py
 
@@ -19,22 +16,6 @@ from screen_printer import ScreenPrinter
 
 # GameMode moved to game_mode.py
 
-class Application:
-    def __init__(self, scr, characters: List[Character]):
-        self.scr = scr
-        self.characters = characters
-        self.game_mode = GameMode(self.scr, self.characters)
-
-    def run(self):
-        while True:
-            self.scr.show_menu()
-            key = self.scr.getkey()
-            if key == 'q':
-                break
-            elif key == '1':
-                self.game_mode.random_character_mode()
-            elif key == '2':
-                self.game_mode.abyss_roulette_mode()
 
 def parse_args():
     parser = argparse.ArgumentParser(
