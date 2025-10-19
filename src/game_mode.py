@@ -10,13 +10,21 @@ if TYPE_CHECKING:
 else:
     UI = Any
 
+
+def _safe_curs_set(val: int) -> None:
+    try:
+        curses.curs_set(val)
+    except Exception:
+        # Ignore if curses is not initialized or running in GUI mode
+        pass
+
 class GameMode:
     def __init__(self, scr: UI, characters: List[Character]):
         self.scr = scr
         self.characters = characters
 
     def random_character_mode(self):
-        curses.curs_set(0)  # TODO: This does not belong here. Move to ScreenPrinter?
+        _safe_curs_set(0)  # cursor visibility handled safely across UIs
         while True:
             character = self.pick_character()
             self.scr.print_random_character(character)
@@ -28,7 +36,7 @@ class GameMode:
 
     # TODO: Refactor into smaller functions? Also this looks very messy with all the prints. There has to be a better way.
     def abyss_roulette_mode(self):
-        curses.curs_set(0)  # TODO: This does not belong here. Move to ScreenPrinter?
+        _safe_curs_set(0)  # cursor visibility handled safely across UIs
         remaining_characters = self.characters.copy()
         team_idx = 0
         all_teams = []

@@ -8,7 +8,19 @@
 set -euo pipefail
 
 APP_NAME="${APP_NAME:-wuwa-team-picker}"
-ENTRY_SCRIPT="${1:-src/main.py}"
+UI_FLAVOR="${UI_FLAVOR:-tui}"  # 'tui' or 'gui'
+ENTRY_SCRIPT="${1:-}"
+
+if [[ -z "${ENTRY_SCRIPT}" ]]; then
+  if [[ "${UI_FLAVOR}" == "gui" ]]; then
+    ENTRY_SCRIPT="src/main_gui.py"
+    if [[ "${APP_NAME}" == "wuwa-team-picker" ]]; then
+      APP_NAME="wuwa-team-picker-gui"
+    fi
+  else
+    ENTRY_SCRIPT="src/main.py"
+  fi
+fi
 
 # Resolve project root (directory containing this script's parent)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -31,6 +43,12 @@ else
   exit 1
 fi
 
+# Configure extra args based on UI flavor
+EXTRA_ARGS=()
+if [[ "${UI_FLAVOR}" == "gui" ]]; then
+  EXTRA_ARGS+=(--hidden-import PySide6.QtCore --hidden-import PySide6.QtGui --hidden-import PySide6.QtWidgets)
+fi
+
 # Build single-file executable
 "${PI_CMD[@]}" \
   --clean \
@@ -38,6 +56,7 @@ fi
   --onefile \
   --name "${APP_NAME}" \
   --paths src \
+  "${EXTRA_ARGS[@]}" \
   "${ENTRY_SCRIPT}"
 
 echo "Build complete. Executable is at: dist/${APP_NAME}"
