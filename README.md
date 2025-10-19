@@ -4,7 +4,7 @@ A terminal-based helper for Wuthering Waves that picks random characters and hel
 - Random Character Picker
 - Team Roulette
 
-This project was written with the help of AI assistance to accelerate refactors and boilerplate, and then reviewed and integrated by a human.
+This project was written by AI as an experiment on how to vibe code. While it does run on the creators machine, treat it like it has not been verified by a human.
 
 ## Requirements
 
