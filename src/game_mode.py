@@ -1,12 +1,17 @@
 import curses
 import random
-from typing import List
+from typing import List, TYPE_CHECKING, Any
 
 from character import Character
 from constants import GAME_MODES
 
+if TYPE_CHECKING:
+    from wuwa_char_random import ScreenPrinter
+else:
+    ScreenPrinter = Any
+
 class GameMode:
-    def __init__(self, scr: "ScreenPrinter", characters: List[Character]):
+    def __init__(self, scr: ScreenPrinter, characters: List[Character]):
         self.scr = scr
         self.characters = characters
 
