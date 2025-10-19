@@ -12,3 +12,6 @@ dependencies = [
 dev = [
     "pyinstaller>=6.16.0",
 ]
+
+[tool.uv.scripts]
+build = "bash scripts/build.sh"
