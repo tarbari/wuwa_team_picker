@@ -64,3 +64,9 @@ Advanced:
 
 - The CSV schema is validated at load time; invalid keys will raise an error.
 - Terminal UI is implemented with curses; make sure your terminal window is large enough for the character cards.
+
+## CSV schema
+
+```csv
+name,level,ascension,talent_basic_atk,talent_skill,talent_forte,talent_liberation,talent_intro,sequence,element,quality
+```
